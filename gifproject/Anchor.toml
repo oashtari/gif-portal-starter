@@ -1,0 +1,14 @@
+[features]
+seeds = false
+[programs.devnet]
+gifproject = "AgQnWwvTNe6hDDMT2upcEcqvcP8QWJC3DJaTK3EPhsUy"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "devnet"
+wallet = "/Users/omidashtari/.config/solana/id.json"
+
+[scripts]
+test = "node tests/gifproject.js"

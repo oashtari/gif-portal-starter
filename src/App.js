@@ -45,6 +45,7 @@ const App = () => {
   const [walletAddress, setWalletAddress] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const [gifList, setGifList] = useState([]);
+  const [ownerAddress, setOwnerAddress] = useState("");
 
 
   const checkIfWalletIsConnected = async () => {
@@ -196,40 +197,24 @@ const App = () => {
           <div className="gif-grid">
             {/* We use index as the key instead, also, the src is now item.gifLink */}
             {gifList.map((item, index) => (
+              // console.log("item:", item)
               <div className="gif-item" key={index}>
                 <img src={item.gifLink} />
+                <h4 className="user-address">Owner address: {item.userAddress.toString()}</h4>
+                {/* <p>{item.userAddress}</p> */}
+                {/* <p>Owner's address: {item.userAddress}</p> */}
               </div>
             ))}
           </div>
+          {/* <div className="user-address">
+            {gifList.map((item, index)=> {
+              <h1>Owner address: {item.userAddress.toString()}</h1>
+            })}
+          </div> */}
         </div>
       )
     }
   }
-
-  // }
-//     <div className="connected-container">
-//       <form
-//         onSubmit={(event) => {
-//           event.preventDefault();
-//           sendGif();
-//         }}
-//       >
-//         <input 
-//         type="text" 
-//         placeholder="Enter gif link!" 
-//         value={inputValue}
-//         onChange={onInputChange}/>
-//         <button type="submit" className="cta-button submit-gif-button">Submit</button>
-//       </form>
-//       <div className="gif-grid">
-//         {gifList.map((gif) => (
-//           <div className="gif-item" key={gif}>
-//             <img src={gif} alt={gif} />
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-// };
 
   
 
@@ -248,6 +233,7 @@ const App = () => {
       const account = await program.account.baseAccount.fetch(baseAccount.publicKey);
       
       console.log("Got the account", account)
+      console.log("Here's the owner address:", account.gifList[0].userAddress.toString())
       setGifList(account.gifList)
   
     } catch (error) {

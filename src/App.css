@@ -111,6 +111,16 @@
   object-fit: cover;
 }
 
+.user-address {
+  color: orange;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-gap: 2rem;
+  justify-items: center;
+  margin: 10;
+  padding: 10;
+}
+
 .connected-container input[type='text'] {
   display: inline-block;
   color: white;
